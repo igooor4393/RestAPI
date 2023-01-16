@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"encoding/json"
 	"fmt"
+	"github.com/lib/pq"
 	"github.com/rs/zerolog/log"
 
 	"net/http"
@@ -24,8 +25,18 @@ type historyRequest struct {
 	Offset int `json:"offset"`
 }
 
+const (
+	host     = "localhost"
+	port     = 32768
+	user     = "postgres"
+	password = "postgrespw"
+	dbname   = "postgres"
+)
+
 func decrypt(w http.ResponseWriter, r *http.Request) {
 	var req decryptRequest
+	log.Info().Msg("get request for decrypt")
+
 	err := json.NewDecoder(r.Body).Decode(&req)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
@@ -36,6 +47,7 @@ func decrypt(w http.ResponseWriter, r *http.Request) {
 	decrypted := req.Decrypt
 
 	// Save the request to the database
+	log.Info().Msg("Try save the request to the database")
 	saveRequest("decrypt", req.Decrypt, decrypted)
 
 	fmt.Fprintf(w, "Decrypted string: %s", decrypted)
@@ -70,20 +82,25 @@ func history(w http.ResponseWriter, r *http.Request) {
 
 func saveRequest(requestType, input, output string) {
 	// Connect to the database
-	db, err := sql.Open("postgres", "postgres://user:password@host/database")
-	if err != nil {
+	log.Info().Msg("Try login to the database")
+	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+"password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
 
-		log.Error().Msg("Error connecting to the database")
-		//log.Print("Error connecting to the database: ", err)
+	db, err := sql.Open("postgres", psqlInfo)
+	if err, ok := err.(*pq.Error); ok {
+		// Here err is of type *pq.Error, inspect all its fields, e.g.:
+		log.Error().Msgf("pq error:", err.Code.Name())
 		return
-
 	}
 	defer db.Close()
 
 	// Save the request to the database
-	_, err = db.Exec("INSERT INTO requests(type, input, output) VALUES ($1, $2, $3)", requestType, input, output)
-	if err != nil {
-		log.Error().Msg("Error inserting request into the database")
+	log.Info().Msg("Try Save the data field to the database")
+
+	_, err = db.Exec("INSERT INTO requests(kloun, input, output) VALUES ($1, $2, $3)", requestType, input, output)
+
+	if err, ok := err.(*pq.Error); ok {
+		// Here err is of type *pq.Error, inspect all its fields, e.g.:
+		log.Error().Msgf("pq error:", err.Code.Name())
 		return
 	}
 }
