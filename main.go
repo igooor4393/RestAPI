@@ -72,34 +72,38 @@ func saveRequest(requestType, input, output string) {
 	// Connect to the database
 	db, err := sql.Open("postgres", "postgres://user:password@host/database")
 	if err != nil {
-		// Handle error
+
+		log.Error().Msg("Error connecting to the database")
+		//log.Print("Error connecting to the database: ", err)
+		return
+
 	}
 	defer db.Close()
 
 	// Save the request to the database
 	_, err = db.Exec("INSERT INTO requests(type, input, output) VALUES ($1, $2, $3)", requestType, input, output)
 	if err != nil {
-		// Handle error
+		log.Error().Msg("Error inserting request into the database")
+		return
 	}
 }
 
 func middleware(next http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		//zerolog.TimeFieldFormat = zerolog.TimeFormatUnix
-		next(w, r)
 
 		log.Info().
-			Str("From:", "").
-			Str("Metod:", "").
-			Str("Request:", "")
+			Str("From:", r.RemoteAddr).
+			Str("Metod:", r.Method).
+			Str("Request:", r.RequestURI)
 
+		next.ServeHTTP(w, r)
 	}
 }
 
 func main() {
 	http.HandleFunc("/decrypt", middleware(decrypt))
-	http.HandleFunc("/encrypt", encrypt)
-	http.HandleFunc("/history", history)
+	http.HandleFunc("/encrypt", middleware(encrypt))
+	http.HandleFunc("/history", middleware(history))
 
 	http.ListenAndServe(":8080", nil)
 
