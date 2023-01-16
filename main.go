@@ -91,7 +91,7 @@ func middleware(next http.HandlerFunc) http.HandlerFunc {
 		log.Info().
 			Str("From:", "").
 			Str("Metod:", "").
-			Str("Name:", "")
+			Str("Request:", "")
 
 	}
 }
