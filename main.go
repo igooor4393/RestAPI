@@ -1,6 +1,7 @@
 package main
 
 import (
+	"RestAPI/cryptLogic"
 	"database/sql"
 	"encoding/json"
 	"fmt"
@@ -44,10 +45,10 @@ func decrypt(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Implement logic to decrypt the string here
-	decrypted := req.Decrypt
+	decrypted := cryptLogic.Decod(req.Decrypt)
 
 	// Save the request to the database
-	log.Info().Msg("Try save the request to the database")
+	log.Info().Msg("Try save the decrypt request to the database")
 	saveRequest("decrypt", req.Decrypt, decrypted)
 
 	fmt.Fprintf(w, "Decrypted string: %s", decrypted)
@@ -55,6 +56,8 @@ func decrypt(w http.ResponseWriter, r *http.Request) {
 
 func encrypt(w http.ResponseWriter, r *http.Request) {
 	var req encryptRequest
+	log.Info().Msg("get request for encrypt")
+
 	err := json.NewDecoder(r.Body).Decode(&req)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
@@ -62,9 +65,10 @@ func encrypt(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Implement logic to encrypt the string here
-	encrypted := req.Encrypt
+	encrypted := cryptLogic.Encode(req.Encrypt)
 
 	// Save the request to the database
+	log.Info().Msg("Try save the encrypt request to the database")
 	saveRequest("encrypt", req.Encrypt, encrypted)
 
 	fmt.Fprintf(w, "Encrypted string: %s", encrypted)
@@ -96,7 +100,7 @@ func saveRequest(requestType, input, output string) {
 	// Save the request to the database
 	log.Info().Msg("Try Save the data field to the database")
 
-	_, err = db.Exec("INSERT INTO requests(kloun, input, output) VALUES ($1, $2, $3)", requestType, input, output)
+	_, err = db.Exec("INSERT INTO requests(requestType, input, output) VALUES ($1, $2, $3)", requestType, input, output)
 
 	if err, ok := err.(*pq.Error); ok {
 		// Here err is of type *pq.Error, inspect all its fields, e.g.:
@@ -111,7 +115,8 @@ func middleware(next http.HandlerFunc) http.HandlerFunc {
 		log.Info().
 			Str("From:", r.RemoteAddr).
 			Str("Metod:", r.Method).
-			Str("Request:", r.RequestURI)
+			Str("Request:", r.RequestURI).
+			Msg("Hi from middleware")
 
 		next.ServeHTTP(w, r)
 	}
