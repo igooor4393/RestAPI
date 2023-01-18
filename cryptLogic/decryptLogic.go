@@ -7,10 +7,10 @@ import (
 func Decod(s string) string {
 	var result strings.Builder
 	for i := 0; i < len(s); i++ {
-		if s[i] >= '0' && s[i] <= '9' {
+		if s[i] >= '2' && s[i] <= '9' {
 			count := int(s[i] - '0')
 			if s[i+1] == '(' {
-				j := i + 1
+				j := i + 2
 				nested := 1
 				for ; j < len(s); j++ {
 					if s[j] == '(' {
