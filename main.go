@@ -41,7 +41,7 @@ func init() {
 	password := os.Getenv("PASSWORD")
 	dbname := os.Getenv("DBNAME")
 
-	Connection = fmt.Sprintf("host=%s port=%d user=%s "+"password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
+	Connection = fmt.Sprintf("host=%s port=%s user=%s "+"password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
 }
 
 func decrypt(w http.ResponseWriter, r *http.Request) {
@@ -101,7 +101,7 @@ func saveRequest(requestType, input, output string) {
 	db, err := sql.Open("postgres", Connection)
 	if err, ok := err.(*pq.Error); ok {
 		// Here err is of type *pq.Error, inspect all its fields, e.g.:
-		log.Error().Msgf("pq error:", err.Code.Name())
+		log.Error().Msgf("pq error:%s", err.Code.Name())
 		return
 	}
 	defer db.Close()
@@ -113,7 +113,7 @@ func saveRequest(requestType, input, output string) {
 
 	if err, ok := err.(*pq.Error); ok {
 		// Here err is of type *pq.Error, inspect all its fields, e.g.:
-		log.Error().Msgf("pq error:", err.Code.Name())
+		log.Error().Msgf("pq error:%s", err.Code.Name())
 		return
 	}
 }
