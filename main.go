@@ -2,13 +2,14 @@ package main
 
 import (
 	"RestAPI/cryptLogic"
+	"RestAPI/logger"
 	"database/sql"
 	"encoding/json"
 	"fmt"
 	"github.com/joho/godotenv"
-	"github.com/lib/pq"
 	"github.com/rs/zerolog/log"
 	"os"
+	"time"
 
 	"net/http"
 
@@ -30,11 +31,14 @@ type historyRequest struct {
 
 var Connection string
 
+var l = logger.Get()
+
 func init() {
 	err := godotenv.Load()
 	if err != nil {
-		log.Fatal().Msg("Error loading .env file")
+		l.Error().Msg("Error loading .env file")
 	}
+
 	host := os.Getenv("HOST")
 	port := os.Getenv("PORT")
 	user := os.Getenv("USER")
@@ -42,15 +46,17 @@ func init() {
 	dbname := os.Getenv("DBNAME")
 
 	Connection = fmt.Sprintf("host=%s port=%s user=%s "+"password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
+
 }
 
 func decrypt(w http.ResponseWriter, r *http.Request) {
 	var req decryptRequest
-	log.Info().Msg("get request for decrypt")
+	l.Info().Msg("get request for decrypt")
 
 	err := json.NewDecoder(r.Body).Decode(&req)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
+		l.Error().Msg("Failed to decode the file")
 		return
 	}
 
@@ -58,7 +64,7 @@ func decrypt(w http.ResponseWriter, r *http.Request) {
 	decrypted := cryptLogic.Decod(req.Decrypt)
 
 	// Save the request to the database
-	log.Info().Msg("Save the decrypt request to the database")
+	l.Info().Msg("Save the decrypt request to the database")
 	saveRequest("decrypt", req.Decrypt, decrypted)
 
 	fmt.Fprintf(w, "Decrypted string: %s", decrypted)
@@ -66,7 +72,7 @@ func decrypt(w http.ResponseWriter, r *http.Request) {
 
 func encrypt(w http.ResponseWriter, r *http.Request) {
 	var req encryptRequest
-	log.Info().Msg("get request for encrypt")
+	l.Info().Msg("get request for encrypt")
 
 	err := json.NewDecoder(r.Body).Decode(&req)
 	if err != nil {
@@ -78,7 +84,7 @@ func encrypt(w http.ResponseWriter, r *http.Request) {
 	encrypted := cryptLogic.Encode(req.Encrypt)
 
 	// Save the request to the database
-	log.Info().Msg("Save the encrypt request to the database")
+	l.Info().Msg("Save the encrypt request to the database")
 	saveRequest("encrypt", req.Encrypt, encrypted)
 
 	fmt.Fprintf(w, "Encrypted string: %s", encrypted)
@@ -86,6 +92,8 @@ func encrypt(w http.ResponseWriter, r *http.Request) {
 
 func history(w http.ResponseWriter, r *http.Request) {
 	var req historyRequest
+	l.Info().Msg("get request for history")
+
 	err := json.NewDecoder(r.Body).Decode(&req)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
@@ -95,47 +103,69 @@ func history(w http.ResponseWriter, r *http.Request) {
 }
 
 func saveRequest(requestType, input, output string) {
+
 	// Connect to the database
-	log.Info().Msg("Try login to the database")
+	l.Info().Msg("Try login to the database")
 
 	db, err := sql.Open("postgres", Connection)
-	if err, ok := err.(*pq.Error); ok {
-		// Here err is of type *pq.Error, inspect all its fields, e.g.:
-		log.Error().Msgf("pq error:%s", err.Code.Name())
+	if err != nil {
+		log.Error().Err(err).Msg("Error connecting to the database")
 		return
 	}
 	defer db.Close()
 
+	err = db.Ping()
+	if err != nil {
+		l.Error().Msg("Error: Could not establish a connection with the database")
+		return
+	}
+
 	// Save the request to the database
-	log.Info().Msg("Save the data field to the database")
+	l.Info().Msg("Save the data field to the database")
 
 	_, err = db.Exec("INSERT INTO requests(requestType, input, output) VALUES ($1, $2, $3)", requestType, input, output)
-
-	if err, ok := err.(*pq.Error); ok {
-		// Here err is of type *pq.Error, inspect all its fields, e.g.:
-		log.Error().Msgf("pq error:%s", err.Code.Name())
-		return
+	if err != nil {
+		l.Error().Err(err).Msg("Error saving request to the database")
 	}
 }
 
 func middleware(next http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 
-		log.Info().
-			Str("From:", r.RemoteAddr).
-			Str("Metod:", r.Method).
-			Str("Request:", r.RequestURI).
-			Msg("Hi from Middleware")
+		start := time.Now()
+
+		l := logger.Get()
+
+		l.
+			Info().
+			Str("method", r.Method).
+			Str("url", r.URL.RequestURI()).
+			Str("user_agent", r.UserAgent()).
+			Dur("elapsed_ms", time.Since(start)).
+			Msg("incoming request")
+		//log.Trace().
+		//	Str("From:", r.RemoteAddr).
+		//	Str("Metod:", r.Method).
+		//	Str("Request:", r.RequestURI).
+		//	Msg("Hi from Middleware!!!")
 
 		next.ServeHTTP(w, r)
 	}
 }
 
 func main() {
+
+	addr := ":8080"
+	l.Info().Msgf("Server started.")
+	l.Info().Msgf("Server port - %s || BD port - %s", addr, os.Getenv("PORT"))
+
 	http.HandleFunc("/decrypt", middleware(decrypt))
 	http.HandleFunc("/encrypt", middleware(encrypt))
 	http.HandleFunc("/history", middleware(history))
 
-	http.ListenAndServe(":8080", nil)
+	err := http.ListenAndServe(addr, nil)
+	if err != nil {
+		l.Error().Msgf("Error ListenAndServe: %s", err.Error())
+	}
 
 }

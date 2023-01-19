@@ -1,0 +1,102 @@
+{"level":"error","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T14:09:00.7109727+03:00","message":"Error: Could not establish a connection with the database"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2:44PM","message":"Server started."}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2:44PM","message":"Server port - :8080 || BD port - 32768"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2:45PM","message":"Server started."}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2:45PM","message":"Server port - :8080 || BD port - 32768"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2:45PM","message":"Save the data field to the database"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2:45PM","message":"Server started."}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2:45PM","message":"Server port - :8080 || BD port - 32768"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2:45PM","message":"Save the data field to the database"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2:47PM","message":"Server started."}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2:47PM","message":"Server port - :8080 || BD port - 32768"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2:47PM","message":"get request for decrypt"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2:47PM","message":"Save the decrypt request to the database"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2:47PM","message":"Try login to the database"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2:47PM","message":"Save the data field to the database"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2:48PM","message":"Server started."}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2:48PM","message":"Server port - :8080 || BD port - 32768"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2:48PM","message":"get request for decrypt"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2:48PM","message":"Save the decrypt request to the database"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2:48PM","message":"Try login to the database"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2:48PM","message":"Save the data field to the database"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:05:00+03:00","message":"Server started."}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:05:00+03:00","message":"Server port - :8080 || BD port - 32768"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:05:05+03:00","message":"get request for decrypt"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:05:05+03:00","message":"Save the decrypt request to the database"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:05:05+03:00","message":"Try login to the database"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:05:05+03:00","message":"Save the data field to the database"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","method":"POST","url":"/decrypt","user_agent":"PostmanRuntime/7.30.0","elapsed_ms":22.8296,"time":"2023-01-19T15:05:05+03:00","message":"incoming request"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:05:05+03:00","message":"get request for decrypt"}
+{"level":"error","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:05:05+03:00","message":"Failed to decode the file"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:08:40+03:00","message":"Server started."}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:08:41+03:00","message":"Server port - :8080 || BD port - 32768"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:08:44+03:00","message":"get request for decrypt"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:08:44+03:00","message":"Save the decrypt request to the database"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:08:44+03:00","message":"Try login to the database"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:08:44+03:00","message":"Save the data field to the database"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","method":"POST","url":"/decrypt","user_agent":"PostmanRuntime/7.30.0","elapsed_ms":22.9315,"time":"2023-01-19T15:08:44+03:00","message":"MIDDLEWARE"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:08:44+03:00","message":"get request for decrypt"}
+{"level":"error","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:08:44+03:00","message":"Failed to decode the file"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:09:24+03:00","message":"get request for decrypt"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:09:24+03:00","message":"Save the decrypt request to the database"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:09:24+03:00","message":"Try login to the database"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:09:24+03:00","message":"Save the data field to the database"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","method":"POST","url":"/decrypt","user_agent":"PostmanRuntime/7.30.0","elapsed_ms":17.5802,"time":"2023-01-19T15:09:24+03:00","message":"MIDDLEWARE"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:09:24+03:00","message":"get request for decrypt"}
+{"level":"error","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:09:24+03:00","message":"Failed to decode the file"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:09:43+03:00","message":"get request for decrypt"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:09:43+03:00","message":"Save the decrypt request to the database"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:09:43+03:00","message":"Try login to the database"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:09:43+03:00","message":"Save the data field to the database"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","method":"POST","url":"/decrypt","user_agent":"PostmanRuntime/7.30.0","elapsed_ms":24.2374,"time":"2023-01-19T15:09:43+03:00","message":"MIDDLEWARE"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:09:43+03:00","message":"get request for decrypt"}
+{"level":"error","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:09:43+03:00","message":"Failed to decode the file"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:09:55+03:00","message":"get request for decrypt"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:09:55+03:00","message":"Save the decrypt request to the database"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:09:55+03:00","message":"Try login to the database"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:09:55+03:00","message":"Save the data field to the database"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","method":"POST","url":"/decrypt","user_agent":"PostmanRuntime/7.30.0","elapsed_ms":44.3145,"time":"2023-01-19T15:09:55+03:00","message":"MIDDLEWARE"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:09:55+03:00","message":"get request for decrypt"}
+{"level":"error","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:09:55+03:00","message":"Failed to decode the file"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:10:23+03:00","message":"Server started."}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:10:23+03:00","message":"Server port - :8080 || BD port - 32768"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:10:26+03:00","message":"get request for decrypt"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:10:26+03:00","message":"Save the decrypt request to the database"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:10:26+03:00","message":"Try login to the database"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:10:26+03:00","message":"Save the data field to the database"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","method":"POST","url":"/decrypt","user_agent":"PostmanRuntime/7.30.0","elapsed_ms":38.6143,"time":"2023-01-19T15:10:26+03:00","message":"MIDDLEWARE"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:10:26+03:00","message":"get request for decrypt"}
+{"level":"error","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:10:26+03:00","message":"Failed to decode the file"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:10:46+03:00","message":"get request for decrypt"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:10:46+03:00","message":"Save the decrypt request to the database"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:10:46+03:00","message":"Try login to the database"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:10:46+03:00","message":"Save the data field to the database"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","method":"POST","url":"/decrypt","user_agent":"PostmanRuntime/7.30.0","elapsed_ms":19.9784,"time":"2023-01-19T15:10:46+03:00","message":"MIDDLEWARE"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:10:46+03:00","message":"get request for decrypt"}
+{"level":"error","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:10:46+03:00","message":"Failed to decode the file"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:11:31+03:00","message":"Server started."}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:11:31+03:00","message":"Server port - :8080 || BD port - 32768"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:11:33+03:00","message":"get request for decrypt"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:11:33+03:00","message":"Save the decrypt request to the database"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:11:33+03:00","message":"Try login to the database"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:11:33+03:00","message":"Save the data field to the database"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","method":"POST","url":"/decrypt","user_agent":"PostmanRuntime/7.30.0","elapsed_ms":31.4147,"time":"2023-01-19T15:11:33+03:00","message":"MIDDLEWARE"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:11:33+03:00","message":"get request for decrypt"}
+{"level":"error","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:11:33+03:00","message":"Failed to decode the file"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:11:56+03:00","message":"Server started."}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:11:56+03:00","message":"Server port - :8080 || BD port - 32768"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:11:57+03:00","message":"get request for decrypt"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:11:57+03:00","message":"Save the decrypt request to the database"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:11:57+03:00","message":"Try login to the database"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:11:57+03:00","message":"Save the data field to the database"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:12:12+03:00","message":"get request for decrypt"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:12:12+03:00","message":"Save the decrypt request to the database"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:12:12+03:00","message":"Try login to the database"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:12:12+03:00","message":"Save the data field to the database"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:12:44+03:00","message":"Server started."}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:12:44+03:00","message":"Server port - :8080 || BD port - 32768"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","method":"POST","url":"/decrypt","user_agent":"PostmanRuntime/7.30.0","elapsed_ms":0,"time":"2023-01-19T15:12:50+03:00","message":"incoming request"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:12:50+03:00","message":"get request for decrypt"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:12:50+03:00","message":"Save the decrypt request to the database"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:12:50+03:00","message":"Try login to the database"}
+{"level":"info","git_revision":"242ffab3da81bb1b078f94cc03c3d4735b006a2b","go_version":"go1.19.3","time":"2023-01-19T15:12:50+03:00","message":"Save the data field to the database"}
