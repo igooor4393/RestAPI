@@ -20,17 +20,19 @@ func TestDecrypt(t *testing.T) {
 
 	for _, test := range testCases {
 
-		reqBody := []byte(test.input)
-		req := httptest.NewRequest("POST", "http://localhost/:8080/decrypt", bytes.NewBuffer(reqBody))
+		t.Run(test.input, func(t *testing.T) {
+			reqBody := []byte(test.input)
+			req := httptest.NewRequest("POST", "http://localhost/:8080/decrypt", bytes.NewBuffer(reqBody))
 
-		res := httptest.NewRecorder()
+			res := httptest.NewRecorder()
 
-		decrypt(res, req)
+			decrypt(res, req)
 
-		got := res.Body.String()
-		if got != test.expected {
-			t.Errorf("Expected response body %q but got %q", test.expected, res.Body.String())
-		}
+			got := res.Body.String()
+			if got != test.expected {
+				t.Errorf("Expected response body %q but got %q", test.expected, res.Body.String())
+			}
+		})
 	}
 
 }
