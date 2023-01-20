@@ -1,7 +1,6 @@
 package logger
 
 import (
-	"fmt"
 	"gopkg.in/natefinch/lumberjack.v2"
 	"io"
 	"os"
@@ -30,9 +29,6 @@ func Get() zerolog.Logger {
 		}
 
 		var output io.Writer = zerolog.ConsoleWriter{
-			FormatMessage: func(i interface{}) string {
-				return fmt.Sprintf("| %s |", i)
-			},
 			Out:        os.Stdout,
 			TimeFormat: time.RFC3339,
 		}

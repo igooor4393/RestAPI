@@ -134,8 +134,6 @@ func middleware(next http.HandlerFunc) http.HandlerFunc {
 
 		start := time.Now()
 
-		l := logger.Get()
-
 		l.
 			Info().
 			Str("method", r.Method).
@@ -156,6 +154,7 @@ func middleware(next http.HandlerFunc) http.HandlerFunc {
 func main() {
 
 	addr := ":8080"
+	l.Info().Msg("============================================================================================================================")
 	l.Info().Msgf("Server started.")
 	l.Info().Msgf("Server port - %s || BD port - %s", addr, os.Getenv("PORT"))
 
