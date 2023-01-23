@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "./";
+
+service StringService {
+  rpc ChangeCase (StringMessage) returns (StringMessage);
+}
+
+message StringMessage {
+  string Value = 1;
+}
