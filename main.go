@@ -7,11 +7,11 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/joho/godotenv"
+	"github.com/nats-io/nats.go"
 	"github.com/rs/zerolog/log"
+	"net/http"
 	"os"
 	"time"
-
-	"net/http"
 
 	_ "github.com/lib/pq"
 )
@@ -32,6 +32,7 @@ type historyRequest struct {
 var Connection string
 
 var l = logger.Get()
+var nc *nats.Conn
 
 func init() {
 	err := godotenv.Load()
@@ -47,6 +48,20 @@ func init() {
 
 	Connection = fmt.Sprintf("host=%s port=%s user=%s "+"password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
 
+	nc, err = nats.Connect("nats://localhost:4222")
+	if err != nil {
+		l.Error().Err(err).Msg("Error connecting to nats server")
+	}
+	nc.Subscribe("responses", func(m *nats.Msg) {
+		// Handle the received message here
+		var response struct {
+			RequestType string `json:"requestType"`
+			Input       string `json:"input"`
+			Output      string `json:"output"`
+		}
+		json.Unmarshal(m.Data, &response)
+		fmt.Printf("Received response: %+v\n", response)
+	})
 }
 
 func decrypt(w http.ResponseWriter, r *http.Request) {
@@ -65,6 +80,9 @@ func decrypt(w http.ResponseWriter, r *http.Request) {
 
 	// Save the request to the database
 	l.Info().Msg("Save the decrypt request to the database")
+	// Публикатор отдает сообщение
+	nc.Publish("requests", []byte(fmt.Sprintf("{requestType: %s, input: %s, output: %s}", "decrypt", req.Decrypt, decrypted)))
+
 	saveRequest("decrypt", req.Decrypt, decrypted)
 
 	fmt.Fprintf(w, "Decrypted string: %s", decrypted)
@@ -85,6 +103,9 @@ func encrypt(w http.ResponseWriter, r *http.Request) {
 
 	// Save the request to the database
 	l.Info().Msg("Save the encrypt request to the database")
+	// Публикатор отдает сообщение
+	nc.Publish("requests", []byte(fmt.Sprintf("{requestType: %s, input: %s, output: %s}", "encrypt", req.Encrypt, encrypted)))
+
 	saveRequest("encrypt", req.Encrypt, encrypted)
 
 	fmt.Fprintf(w, "Encrypted string: %s", encrypted)
