@@ -1,6 +1,7 @@
 package main
 
 import (
+	"RestAPI/handlers"
 	"bytes"
 	"net/http/httptest"
 	"testing"
@@ -22,11 +23,11 @@ func TestDecrypt(t *testing.T) {
 
 		t.Run(test.input, func(t *testing.T) {
 			reqBody := []byte(test.input)
-			req := httptest.NewRequest("POST", "http://localhost/:8080/decrypt", bytes.NewBuffer(reqBody))
+			req := httptest.NewRequest("POST", "http://localhost/decrypt", bytes.NewBuffer(reqBody))
 
 			res := httptest.NewRecorder()
 
-			decrypt(res, req)
+			handlers.Decrypt(res, req)
 
 			got := res.Body.String()
 			if got != test.expected {
