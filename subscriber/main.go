@@ -1,27 +1,25 @@
 package main
 
 import (
-	"log"
-
+	"RestAPI/logger"
+	"fmt"
 	"github.com/nats-io/nats.go"
 )
 
+var l = logger.Get()
+
 func main() {
-	// Connect to a NATS server
 	nc, err := nats.Connect("nats://localhost:4222")
 	if err != nil {
-		log.Fatal(err)
+		l.Error().Err(err).Msg("Error connecting to nats server")
 	}
 	defer nc.Close()
 
-	// Subscribe to messages on the "orders" topic
-	_, err = nc.Subscribe("requests", func(msg *nats.Msg) {
-		log.Printf("Received message: %s", string(msg.Data))
+	nc.Subscribe("requests", func(m *nats.Msg) {
+		fmt.Printf("Received a message: %s\n", string(m.Data))
 	})
-	if err != nil {
-		log.Println(err)
-	}
 
 	// Wait for messages
 	select {}
+
 }
