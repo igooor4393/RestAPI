@@ -1,7 +1,7 @@
 package database
 
 import (
-	"RestAPI/logger"
+	"RestAPI/pkg/logger"
 	"database/sql"
 	"fmt"
 	_ "github.com/lib/pq"

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"RestAPI/logger"
+	"RestAPI/pkg/logger"
 	"fmt"
 	"github.com/nats-io/nats.go"
 )

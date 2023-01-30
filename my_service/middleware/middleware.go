@@ -1,7 +1,7 @@
 package middleware
 
 import (
-	"RestAPI/logger"
+	"RestAPI/pkg/logger"
 	"net/http"
 	"time"
 )

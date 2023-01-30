@@ -1,11 +1,11 @@
 package handlers
 
 import (
-	"RestAPI/domain/cryptLogic"
-	"RestAPI/infrastructure/database"
+	cryptLogic2 "RestAPI/cryptLogic"
+	"RestAPI/my_service/database"
+	"RestAPI/my_service/nats"
+	"RestAPI/pkg/logger"
 
-	"RestAPI/infrastructure/nats"
-	"RestAPI/logger"
 	"encoding/json"
 	"fmt"
 
@@ -44,7 +44,7 @@ func Decrypt(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	decrypted := cryptLogic.Decod(req.Decrypt)
+	decrypted := cryptLogic2.Decod(req.Decrypt)
 
 	l.Info().Msg("Публикатор отдает сообщение")
 
@@ -73,7 +73,7 @@ func Encrypt(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// logic to encrypt the string here
-	encrypted := cryptLogic.Encode(req.Encrypt)
+	encrypted := cryptLogic2.Encode(req.Encrypt)
 
 	// Save the request to the database
 	l.Info().Msg("Save the encrypt request to the database")

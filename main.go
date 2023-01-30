@@ -2,10 +2,10 @@ package main
 
 import (
 	"RestAPI/handlers"
-	"RestAPI/infrastructure/database"
-	"RestAPI/infrastructure/nats"
-	"RestAPI/logger"
+	"RestAPI/my_service/database"
 	"RestAPI/my_service/middleware"
+	"RestAPI/my_service/nats"
+	"RestAPI/pkg/logger"
 	"net/http"
 )
 
