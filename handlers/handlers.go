@@ -12,25 +12,6 @@ import (
 	"net/http"
 )
 
-//func init() {
-//
-//	//nc, err := nats.Connect("nats://localhost:4222")
-//	//if err != nil {
-//	//	l.Error().Err(err).Msg("Error connecting to nats server")
-//	//}
-//
-//	nc.Subscribe("requests", func(m *nats.Msg) {
-//		// Handle the received message here
-//		var response struct {
-//			RequestType string `json:"request_type,omitempty"`
-//			Input       string `json:"input"`
-//			Output      string `json:"output"`
-//		}
-//		json.Unmarshal(m.Data, &response)
-//		fmt.Printf("Received response: %+v\n", response)
-//	})
-//}
-
 var l = logger.Get()
 
 type decryptRequest struct {
@@ -97,7 +78,6 @@ func Encrypt(w http.ResponseWriter, r *http.Request) {
 	// Save the request to the database
 	l.Info().Msg("Save the encrypt request to the database")
 
-	fmt.Println("дергаю натс")
 	nats.Publisher(nc, "decrypted", req.Encrypt, encrypted)
 
 	database.SaveRequest("encrypt", req.Encrypt, encrypted)

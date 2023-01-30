@@ -1,21 +1,24 @@
 package database
 
 import (
-	config "RestAPI/infrastructure"
 	"RestAPI/logger"
 	"database/sql"
+	"fmt"
 	_ "github.com/lib/pq"
 	"github.com/rs/zerolog/log"
 )
 
 var l = logger.Get()
+
 var db *sql.DB
 
 func Connect() {
+	connection := fmt.Sprintf("user=postgres password=postgrespw dbname=postgres sslmode=disable")
+
 	l.Info().Msg("Try login to the database")
 
 	var err error
-	db, err = sql.Open("postgres", config.LoadEnv())
+	db, err = sql.Open("postgres", connection)
 	if err != nil {
 		log.Error().Err(err).Msg("Error connecting to the database")
 		return
