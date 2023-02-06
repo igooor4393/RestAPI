@@ -4,6 +4,7 @@ import (
 	cryptLogic2 "RestAPI/cryptLogic"
 	"RestAPI/my_service/database"
 	"RestAPI/my_service/nats"
+	"RestAPI/my_service/validator"
 	"RestAPI/pkg/logger"
 
 	"encoding/json"
@@ -28,58 +29,68 @@ type historyRequest struct {
 }
 
 func Decrypt(w http.ResponseWriter, r *http.Request) {
-	err, nc := nats.Open()
-	if err != nil {
-		// handle error
-	}
 
 	var req decryptRequest
 
-	l.Info().Msg("get request for decrypt")
+	l.Info().Msg("Get request for decrypt")
 
-	err = json.NewDecoder(r.Body).Decode(&req)
+	err := json.NewDecoder(r.Body).Decode(&req)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		l.Error().Msg("Failed to decode the file")
 		return
 	}
+	//validate
+
+	err = validator.Valid(req.Decrypt)
+	if err != nil {
+		fmt.Fprintf(w, "Not valid")
+		return
+	}
 
 	decrypted := cryptLogic2.Decod(req.Decrypt)
+	err, nc := nats.Open()
+	if err != nil {
+	}
 
-	l.Info().Msg("Публикатор отдает сообщение")
-
-	fmt.Println("дергаю натс")
+	l.Info().Msg("Push decrypt message in NATS")
 	nats.Publisher(nc, "decrypted", req.Decrypt, decrypted)
 
 	l.Info().Msg("Save the decrypt request to the database")
 	database.SaveRequest("decrypt", req.Decrypt, decrypted)
 
 	fmt.Fprintf(w, "Decrypted string: %s", decrypted)
+
 }
 
 func Encrypt(w http.ResponseWriter, r *http.Request) {
-	err, nc := nats.Open()
-	if err != nil {
-		// handle error
-	}
 
 	var req encryptRequest
 	l.Info().Msg("get request for encrypt")
 
-	err = json.NewDecoder(r.Body).Decode(&req)
+	err := json.NewDecoder(r.Body).Decode(&req)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-
+	//validate
+	err = validator.Valid(req.Encrypt)
+	if err != nil {
+		fmt.Fprintf(w, "Not valid")
+		return
+	}
 	// logic to encrypt the string here
 	encrypted := cryptLogic2.Encode(req.Encrypt)
 
 	// Save the request to the database
-	l.Info().Msg("Save the encrypt request to the database")
-
+	err, nc := nats.Open()
+	if err != nil {
+		// handle error
+	}
+	l.Info().Msg("push encrypt message in NATS")
 	nats.Publisher(nc, "decrypted", req.Encrypt, encrypted)
 
+	l.Info().Msg("Save the encrypt request to the database")
 	database.SaveRequest("encrypt", req.Encrypt, encrypted)
 
 	fmt.Fprintf(w, "Encrypted string: %s", encrypted)

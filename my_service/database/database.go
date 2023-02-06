@@ -13,9 +13,8 @@ var l = logger.Get()
 var db *sql.DB
 
 func Connect() {
-	connection := fmt.Sprintf("user=postgres password=postgrespw dbname=postgres sslmode=disable")
 
-	l.Info().Msg("Try login to the database")
+	connection := fmt.Sprintf("user=postgres password=postgrespw dbname=postgres sslmode=disable")
 
 	var err error
 	db, err = sql.Open("postgres", connection)
@@ -29,6 +28,8 @@ func Connect() {
 		l.Error().Msg("Error: Could not establish a connection with the database")
 		return
 	}
+	//l.Info().Msg("Connecting to the database")
+
 }
 
 func SaveRequest(requestType, input, output string) {

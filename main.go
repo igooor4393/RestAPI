@@ -5,6 +5,7 @@ import (
 	"RestAPI/my_service/database"
 	"RestAPI/my_service/middleware"
 	"RestAPI/my_service/nats"
+	"RestAPI/my_service/ticker"
 	"RestAPI/pkg/logger"
 	"net/http"
 )
@@ -12,13 +13,15 @@ import (
 var l = logger.Get()
 
 func main() {
-	// load config files
 
 	// connect to database
 	database.Connect()
 
 	// connect to nats
 	nats.Open()
+
+	//Раз в 30 секунд проверяет соединение с NATS и BD. Конечный таймер поставлен на 30 минут, через 30 минут тикер перестает срабатывать.
+	go ticker.Ticker()
 
 	// routing
 	http.HandleFunc("/decrypt", middleware.Midd(handlers.Decrypt))

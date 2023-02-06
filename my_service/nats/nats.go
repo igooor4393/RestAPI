@@ -14,7 +14,7 @@ func Open() (error, *nats.Conn) {
 		l.Error().Err(err).Msg("Error connecting to nats server")
 		return err, nil
 	}
-
+	//l.Info().Msg("Connecting to nats server")
 	return nil, nc
 }
 
